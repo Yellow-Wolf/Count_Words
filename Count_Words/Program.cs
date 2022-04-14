@@ -7,6 +7,7 @@ namespace Count_Words
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("test World!");
         }
     }
 }
