@@ -20,6 +20,21 @@ namespace Count_Words
                 lst.Add(l);
                 l = Console.ReadLine();
             }
+            int l = 0;
+            for (int i = 0; i < 10; i++){
+                for (int j = 0; j < 10; j++){
+                    if (j == i/2 - l)
+                        Console.Write("/");
+                    else if (j == i/2 + l)
+                        Console.Write("\");
+                    Console.Write(" ");
+                 }
+                                      l++;
+                                      Console.WriteLine();
+            }
+            
+            while(true)
+                Console.WriteLine("Hello World!");
         }
     }
 }
