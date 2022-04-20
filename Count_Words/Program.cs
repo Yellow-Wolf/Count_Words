@@ -1,40 +1,63 @@
 ﻿using System;
-
+using System.IO;
+using System.Collections.Generic;
 namespace Count_Words
-{
-    class Program
+{ 
+    class MainClass
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("test World!");
+            string line;
             int count = 0;
-            list<string> lst = new list<string>();
-            string l = Console.ReadLine();
-            while (l != " "){
-                for (int i = 0; i < lst.Count; i++){
-                        if (lst[i] == l){
-                            break();
-                        }
+            List<string> lst = new List<string>();
+            StreamReader reader = new StreamReader("/home/user/Загрузки/big.txt");
+            while ((line = reader.ReadLine()) != null)
+            {
+                string elem = "";
+                for (int i = 0; i < line.Length; i++)
+                {
+
+                    if (line[i] != ' ' && line[i] != '.' && line[i] != ',' && line[i] != '-' && line[i] != '(' && line[i] != ')' && line[i] != '[' && line[i] != ']' && line[i] != ':' && line[i] != ';' && line[i] != '\u0022')
+                    {
+                        elem += line[i];
+                    }
+                    else
+                    {
+                        if (elem != "")
+                            lst.Add(elem);
+                        elem = "";
+                    }
                 }
-                lst.Add(l);
-                l = Console.ReadLine();
+                count += 1;
             }
-            int l = 0;
-            for (int i = 0; i < 10; i++){
-                for (int j = 0; j < 10; j++){
-                    if (j == i/2 - l)
-                        Console.Write("/");
-                    else if (j == i/2 + l)
-                        Console.Write("\");
-                    Console.Write(" ");
-                 }
-                                      l++;
-                                      Console.WriteLine();
+            //for (int i = 0; i < lst.Count; i++)
+            //{
+            //Console.WriteLine(lst[i]);
+            //}
+            Console.WriteLine("Введите строку для поиска");
+            string s = Console.ReadLine();
+            int size = s.Length;
+            int counter = 0;
+            foreach (var item in lst)
+            {
+                if (item[0] == s[0] && item.Length == size)
+                {
+                    int cnt = 0;
+                    for (int i = 0; i < item.Length; i++)
+                    {
+                        if (item[i] == s[i])
+                        {
+                            cnt++;
+                        }
+                    }
+                    if (cnt == size)
+                    {
+                        counter += 1;
+                    }
+                }
             }
-            
-            while(true)
-                Console.WriteLine("Hello World!");
+
+            Console.WriteLine("Количество вхождений слова: " + counter);
         }
     }
 }
