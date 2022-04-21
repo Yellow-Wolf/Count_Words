@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Count_Words
 {
@@ -6,35 +7,32 @@ namespace Count_Words
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("test World!");
-            int count = 0;
-            list<string> lst = new list<string>();
-            string l = Console.ReadLine();
-            while (l != " "){
-                for (int i = 0; i < lst.Count; i++){
-                        if (lst[i] == l){
-                            break();
-                        }
-                }
-                lst.Add(l);
-                l = Console.ReadLine();
-            }
-            int l = 0;
-            for (int i = 0; i < 10; i++){
-                for (int j = 0; j < 10; j++){
-                    if (j == i/2 - l)
-                        Console.Write("/");
-                    else if (j == i/2 + l)
-                        Console.Write("\");
-                    Console.Write(" ");
-                 }
-                                      l++;
-                                      Console.WriteLine();
-            }
+            var loader = new Loader();
+            var words = loader.load("big.txt");
+            Console.WriteLine("Всего слов: " + words.Count);
+
+               // Всего слов: 10611980
+               // Уникальных: 525090
+               // the 564373
+
             
-            while(true)
-                Console.WriteLine("Hello World!");
+            var dict = new SortedDictionary<string, int>();
+            //var dict = new Dictionary<string, int>();
+            //var dict = new ВашКонтейнер<string, int>();
+            foreach(var word in words)
+            {
+                if(dict.ContainsKey(word)) // log(n)
+                        ++dict[word];      // log(n)
+                else
+                        dict.Add(word, 1);
+            }
+            Console.WriteLine("Уникальных: " + dict.Count);
+
+             string str = "the";
+             if(dict.ContainsKey(str))
+                Console.WriteLine(str + " " + dict[str]);
+             else
+                Console.WriteLine(str + " 0");
         }
     }
 }
