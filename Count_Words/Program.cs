@@ -8,7 +8,7 @@ namespace Count_Words
         static void Main(string[] args)
         {
             var loader = new Loader();
-            var words = loader.load("big.txt");
+            var words = loader.load("../../../big.txt");
             Console.WriteLine("Всего слов: " + words.Count);
 
                // Всего слов: 10611980
