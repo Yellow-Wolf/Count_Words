@@ -10,8 +10,8 @@ public Tuple<double, double, double> TimeCounting(List<int> times)
 
     List<int> tmp = times;
     tmp.Sort();
-    double median = tmp.Average();
-
+    double median = tmp.Count % 2 == 0 ? (tmp[tmp.Count / 2] + tmp[tmp.Count / 2 + 1]) / 2 : tmp[tmp.Count / 2];
+    
     double summ = tmp.Select(x => (x - average) * (x - average)).Sum();
     double stddev = Math.Sqrt(summ / tmp.Count);
 
