@@ -8,22 +8,10 @@ namespace Count_Words
 {
     internal class BoxPlot
     {
-        myWordCount mc = new myWordCount();
-        public int median()
+        public double median(List<int> times)
         {
-            mc.WordCount();
-            var k = mc.wordList.Values.ToArray();
-            int sum = k.Sum();
-
-            var accum = 0;
-            for (int i = 0; i < k.Length; i++)
-            {
-                accum += k[i];
-                if (accum >= sum / 2)
-                    return i;
-            }
-
-            return k.Length;
+             Tuple<double, double, double> tup = TimeCounting(times);
+             return tup[1];
         }
     }
 }
