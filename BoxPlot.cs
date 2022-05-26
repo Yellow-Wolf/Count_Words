@@ -13,5 +13,13 @@ namespace Count_Words
              Tuple<double, double, double> tup = TimeCounting(times);
              return tup[1];
         }
+        
+        double StdDev(List<double> valuesList)
+        {
+            double average = valuesList.Sum();
+            average = average / valuesList.Count;
+            double sum = valuesList.Sum(x => Math.Pow(x - average, 2)); 
+            return Math.Sqrt(sum / valuesList.Count);
+        }
     }
 }
