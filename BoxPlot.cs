@@ -21,5 +21,10 @@ namespace Count_Words
             double sum = valuesList.Sum(x => Math.Pow(x - average, 2)); 
             return Math.Sqrt(sum / valuesList.Count);
         }
+        public static int amax(List<int> valueList)
+        {
+             return valueList.Max();
+            
+        }
     }
 }
